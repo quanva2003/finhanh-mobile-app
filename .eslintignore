@@ -1,0 +1,6 @@
+app.config.ts
+src/graphql-client/generated
+src/graphql-client/apollo.tsx
+src/graphql/apollo.ts
+src/graphql/types.ts
+schema.graphql

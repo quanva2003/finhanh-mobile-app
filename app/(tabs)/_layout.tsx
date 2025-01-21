@@ -1,45 +1,66 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
+import { Tabs } from 'expo-router'
+import { Text } from '@/components/ui/Text'
+import { Image, View } from 'react-native'
+import { Avatar, Icon } from '@ui-kitten/components'
+import { useAuthStore } from '@/store/auth/authSlice'
+import { BASE_DOMAIN } from '@/constants'
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+export default function TabsLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
+        tabBarStyle: {
+          backgroundColor: '#fff',
+          height: 60,
+        },
+      }}
+    >
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarLabel: ({ color }) => (
+            <Text className="text-xs font-700" style={{ color }}>
+              Thu/Chi
+            </Text>
+          ),
+          tabBarIcon: ({ color }) => <Icon name="credit-card-outline" fill={color} style={{ width: 24, height: 24 }} />,
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="newReceipt"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: 'Thêm mới',
+          headerTitle: () => (
+            <View className="flex-row items-center">
+              <Text className="text-lg font-700">Thêm mới</Text>
+            </View>
+          ),
+          tabBarLabel: ({ color }) => (
+            <Text className="text-xs font-700" style={{ color }}>
+              Thêm mới
+            </Text>
+          ),
+          tabBarIcon: ({ color }) => <Icon name="plus-circle-outline" fill={color} style={{ width: 24, height: 24 }} />,
+        }}
+      />
+      <Tabs.Screen
+        name="setting"
+        options={{
+          title: 'Cài đặt',
+          headerTitle: () => (
+            <View className="flex-row items-center">
+              <Text className="text-lg font-700">Cài đặt</Text>
+            </View>
+          ),
+          tabBarLabel: ({ color }) => (
+            <Text className="text-xs font-700" style={{ color }}>
+              Cài đặt
+            </Text>
+          ),
+          tabBarIcon: ({ color }) => <Icon name="settings-outline" fill={color} style={{ width: 24, height: 24 }} />,
         }}
       />
     </Tabs>
-  );
+  )
 }

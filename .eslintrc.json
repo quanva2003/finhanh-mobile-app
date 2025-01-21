@@ -1,0 +1,22 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "extends": ["universe/native", "universe/shared/typescript-analysis", "plugin:react-hooks/recommended"],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["react-hooks"],
+  "rules": {
+    "curly": ["error", "all"],
+    "handle-callback-err": "off",
+    "import/order": [
+      "warn",
+      {
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+        "newlines-between": "always",
+        "pathGroups": [{ "group": "internal", "pattern": "~/**" }]
+      }
+    ],
+    "react-hooks/rules-of-hooks": "error"
+  }
+}

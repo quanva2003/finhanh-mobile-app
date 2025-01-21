@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "VNCaps_Mobile_v2.0",
-    "slug": "VNCaps_Mobile_v2.0",
+    "name": "FINHANH",
+    "slug": "finhanh",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/logo-icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -13,9 +13,10 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+        "backgroundColor": "#ffffff",
+        "foregroundImage": ""
+      },
+      "package": "com.dansolutionsvn.finhanh"
     },
     "web": {
       "bundler": "metro",
@@ -32,10 +33,39 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
+      ],
+      [
+        "expo-updates",
+        {
+          "username": "wuanvan5076"
+        }
       ]
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "fonts": [
+      {
+        "asset": "assets/fonts/Quicksand-Medium.ttf",
+        "family": "Quick-Medium"
+      },
+      {
+        "asset": "assets/fonts/Quicksand-SemiBold.ttf",
+        "family": "Quick-SemiBold"
+      },
+      {
+        "asset": "assets/fonts/Quicksand-Bold.ttf",
+        "family": "Quick-Bold"
+      }
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "c1a60ec5-8fce-4d49-a0ba-586f703fea4e"
+      }
+    },
+    "owner": "wuanvan5076"
   }
 }

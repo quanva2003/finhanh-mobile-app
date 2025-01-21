@@ -1,0 +1,4 @@
+src/graphql-client/generated
+node_modules
+.expo
+.expo-shared
