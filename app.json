@@ -9,7 +9,8 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.dansolutionsvn.finhanh"
     },
     "android": {
       "adaptiveIcon": {
@@ -63,9 +64,9 @@
         "origin": false
       },
       "eas": {
-        "projectId": "c1a60ec5-8fce-4d49-a0ba-586f703fea4e"
+        "projectId": "e8f0d67e-bd46-40c3-ad56-17b16b0dcc7e"
       }
     },
-    "owner": "wuanvan5076"
+    "owner": "dansolutions"
   }
 }

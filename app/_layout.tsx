@@ -10,22 +10,22 @@ import { useEffect } from 'react'
 export default function RootLayout() {
   const fontsLoaded = useCachedResources()
 
-  async function onFetchUpdateAsync() {
-    try {
-      const update = await Updates.checkForUpdateAsync()
+  // async function onFetchUpdateAsync() {
+  //   try {
+  //     const update = await Updates.checkForUpdateAsync()
 
-      if (update.isAvailable) {
-        await Updates.fetchUpdateAsync()
-        await Updates.reloadAsync()
-      }
-    } catch (error) {
-      alert(`Error fetching latest Expo update: ${error}`)
-    }
-  }
+  //     if (update.isAvailable) {
+  //       await Updates.fetchUpdateAsync()
+  //       await Updates.reloadAsync()
+  //     }
+  //   } catch (error) {
+  //     alert(`Error fetching latest Expo update: ${error}`)
+  //   }
+  // }
 
-  useEffect(() => {
-    onFetchUpdateAsync()
-  }, [])
+  // useEffect(() => {
+  //   onFetchUpdateAsync()
+  // }, [])
 
   if (!fontsLoaded) {
     return null

@@ -14,7 +14,7 @@ export const authenticate = async (userName: string, password: string): Promise<
     if (response.data.statusCode && response.data.statusCode === 200) {
       if (response.data.data.access_token) {
         const token = response.data.data.access_token
-        await AsyncStorage.setItem('Token', token)
+        await AsyncStorage.setItem('token', token)
       }
     } else {
       alert('Tài khoản hoặc mật khẩu sai!')

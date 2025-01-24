@@ -4,12 +4,12 @@ import { Image, View } from 'react-native'
 import { Avatar, Icon } from '@ui-kitten/components'
 import { useAuthStore } from '@/store/auth/authSlice'
 import { BASE_DOMAIN } from '@/constants'
+import { AppRoute } from '@/utils/constants'
 
 export default function TabsLayout() {
   return (
     <Tabs
       screenOptions={{
-        headerShown: false,
         tabBarStyle: {
           backgroundColor: '#fff',
           height: 60,
@@ -19,9 +19,10 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="home"
         options={{
+          headerShown: false,
           tabBarLabel: ({ color }) => (
             <Text className="text-xs font-700" style={{ color }}>
-              Thu/Chi
+              {AppRoute.RECEIPTS}
             </Text>
           ),
           tabBarIcon: ({ color }) => <Icon name="credit-card-outline" fill={color} style={{ width: 24, height: 24 }} />,
@@ -30,16 +31,10 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="newReceipt"
         options={{
-          title: 'Thêm mới',
           headerTitle: () => (
             <View className="flex-row items-center">
-              <Text className="text-lg font-700">Thêm mới</Text>
+              <Text className="text-lg font-700">{AppRoute.ADD_RECEIPT}</Text>
             </View>
-          ),
-          tabBarLabel: ({ color }) => (
-            <Text className="text-xs font-700" style={{ color }}>
-              Thêm mới
-            </Text>
           ),
           tabBarIcon: ({ color }) => <Icon name="plus-circle-outline" fill={color} style={{ width: 24, height: 24 }} />,
         }}
