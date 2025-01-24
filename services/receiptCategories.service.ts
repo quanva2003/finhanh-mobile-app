@@ -1,3 +1,5 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
 export interface Category {
   id: number
   category: string
@@ -6,6 +8,7 @@ export interface Category {
 
 export const fetchCategories = async () => {
   try {
+    const token = await AsyncStorage.getItem('token')
     let allCategories: Category[] = []
     let currentPage = 1
     let totalPages = 1
@@ -14,7 +17,7 @@ export const fetchCategories = async () => {
       const response = await fetch(`${process.env.EXPO_PUBLIC_BASE_URL}/receipt-categories?page=${currentPage}`, {
         method: 'GET',
         headers: {
-          Authorization: `Bearer ${process.env.EXPO_PUBLIC_ACCESS_TOKEN}`,
+          Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
       })

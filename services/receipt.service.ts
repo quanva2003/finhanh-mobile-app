@@ -1,8 +1,9 @@
 import { AddReceiptItem, ApiResponse, UpdateReceiptItem } from '@/types/receipt.interface'
 import { Receipt } from '@/types/receipt.interface'
-
+import AsyncStorage from '@react-native-async-storage/async-storage'
 export const fetchReceipts = async (receiptType: string): Promise<Receipt[]> => {
   try {
+    const token = await AsyncStorage.getItem('token')
     let allItems: Receipt[] = []
     let currentPage = 1
     let totalPages = 1
@@ -11,7 +12,7 @@ export const fetchReceipts = async (receiptType: string): Promise<Receipt[]> => 
       const responseReceiptData = await fetch(`${process.env.EXPO_PUBLIC_BASE_URL}/receipts?page=${currentPage}`, {
         method: 'GET',
         headers: {
-          Authorization: `Bearer ${process.env.EXPO_PUBLIC_ACCESS_TOKEN}`,
+          Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
       })
@@ -37,10 +38,11 @@ export const fetchReceipts = async (receiptType: string): Promise<Receipt[]> => 
 
 export const postReceipt = async (newReceipt: AddReceiptItem): Promise<void> => {
   try {
+    const token = await AsyncStorage.getItem('token')
     const response = await fetch(`${process.env.EXPO_PUBLIC_BASE_URL}/receipts`, {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${process.env.EXPO_PUBLIC_ACCESS_TOKEN}`,
+        Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(newReceipt),
@@ -56,10 +58,11 @@ export const postReceipt = async (newReceipt: AddReceiptItem): Promise<void> => 
 
 export const updateReceipt = async (id: number, updateReceipt: UpdateReceiptItem): Promise<void> => {
   try {
+    const token = await AsyncStorage.getItem('token')
     const response = await fetch(`${process.env.EXPO_PUBLIC_BASE_URL}/receipts/${id}`, {
       method: 'PUT',
       headers: {
-        Authorization: `Bearer ${process.env.EXPO_PUBLIC_ACCESS_TOKEN}`,
+        Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(updateReceipt),
@@ -75,10 +78,11 @@ export const updateReceipt = async (id: number, updateReceipt: UpdateReceiptItem
 }
 
 export const fetchReceipt = async (receiptId: number) => {
+  const token = await AsyncStorage.getItem('token')
   const response = await fetch(`${process.env.EXPO_PUBLIC_BASE_URL}/receipts/${receiptId}`, {
     method: 'GET',
     headers: {
-      Authorization: `Bearer ${process.env.EXPO_PUBLIC_ACCESS_TOKEN}`,
+      Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     },
   })

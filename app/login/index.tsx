@@ -29,6 +29,7 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
     }
 
     const auth = await authenticate(userName.value, password.value)
+
     if (auth) {
       await AsyncStorage.setItem('isAuthorized', IS_AUTHENTICATED)
       setAuthorized(true)
